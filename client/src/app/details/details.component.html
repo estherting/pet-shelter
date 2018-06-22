@@ -1,0 +1,17 @@
+
+
+<div class="wrapper">
+  <a [routerLink]="['/pets']">Home</a>
+  <h3>Details about {{pet.name}}</h3>
+  <p>Pet type: {{pet.type}}</p>
+  <p>Description: {{pet.description}}</p>
+  <p>Skills: {{pet.skill1}}, {{pet.skill2}}, {{pet.skill3}}</p>
+  <p>Likes: {{pet.likes}}</p>
+
+
+
+
+  <button  (click)="likePet()" ng-model="true" [disabled]="clicked" (click)="clickedButton()" >Like this pet</button>
+
+  <button (click)="deletePet()">Adopt this pet!</button>
+</div>

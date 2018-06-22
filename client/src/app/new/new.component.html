@@ -1,0 +1,47 @@
+<div class="wrapper">
+  <h3>Know of a pet needing a home?</h3>
+
+  <div class="error" *ngIf="error">
+    <p *ngFor="let e of error">{{e}}</p>
+  </div>
+
+  <div *ngIf="name.errors" class="validation">
+    <div *ngIf="name.errors.required">
+      *Name is required
+    </div>
+    <div *ngIf="name.errors.minlength">
+      *Name must be at least 3 characters
+    </div>
+  </div>
+
+  <form method="post">
+    <label>
+      Pet name:
+      <input type="text" name="name" [(ngModel)]="pet.name" required minlength="3" #name="ngModel">
+    </label>
+    <label>
+      Pet type:
+      <input type="text" name="type" [(ngModel)]="pet.type">
+    </label>
+    <label>
+      Description:
+      <input type="text" name="description" [(ngModel)]="pet.description">
+    </label>
+    <p>Skills: </p>
+    <label class="skills">
+      Skill 1:
+      <input type="text" name="skill1" [(ngModel)]="pet.skill1">
+    </label>
+    <label class="skills">
+      Skill 2:
+      <input type="text" name="skill2" [(ngModel)]="pet.skill2">
+    </label>
+    <label class="skills">
+      Skill 3:
+      <input type="text" name="skill3" [(ngModel)]="pet.skill3">
+    </label>
+
+    <button (click)="addPet()">Add pet</button>
+    <button [routerLink]="['/pets']">Cancel</button>
+  </form>
+</div>

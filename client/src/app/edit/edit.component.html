@@ -1,0 +1,69 @@
+<div class="wrapper">
+  <h3>Edit this pet</h3>
+
+  <div class="error" *ngIf="error">
+    <p *ngFor="let e of error">{{e}}</p>
+  </div>
+
+  <div *ngIf="type.errors" class="validation">
+    <div *ngIf="type.errors.required">
+      *Type is required
+    </div>
+    <div *ngIf="type.errors.minlength">
+      *Type must be at least 3 characters
+    </div>
+  </div>
+
+  <div *ngIf="name.errors" class="validation">
+    <div *ngIf="name.errors.required">
+      *Name is required
+    </div>
+    <div *ngIf="name.errors.minlength">
+      *Name must be at least 3 characters
+    </div>
+  </div>
+
+  <div *ngIf="description.errors" class="validation">
+    <div *ngIf="description.errors.required">
+      *Desc is required
+    </div>
+    <div *ngIf="description.errors.minlength">
+      *Desc must be at least 3 characters
+    </div>
+  </div>
+
+  <form method="post">
+
+    <label>
+      Pet name:
+      <input type="text" name="name" [(ngModel)]="pet.name" required minlength="3" #name="ngModel">
+    </label>
+
+    <label>
+      Pet type:
+      <input type="text" name="type" [(ngModel)]="pet.type" required minlength="3" #type="ngModel">
+    </label>
+
+    <label>
+      Description:
+      <input type="text" name="description" [(ngModel)]="pet.description" required minlength="3" #description="ngModel">
+    </label>
+
+    <p>Skills: </p>
+    <label class="skills">
+      Skill 1:
+      <input type="text" name="skill1" [(ngModel)]="pet.skill1">
+    </label>
+    <label class="skills">
+      Skill 2:
+      <input type="text" name="skill2" [(ngModel)]="pet.skill2">
+    </label>
+    <label class="skills">
+      Skill 3:
+      <input type="text" name="skill3" [(ngModel)]="pet.skill3">
+    </label>
+
+    <button (click)="editPet()">Edit pet</button>
+    <button [routerLink]="['/pets']">Cancel</button>
+  </form>
+</div>
